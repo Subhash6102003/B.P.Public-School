@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - B. P. Public School</title>
+    <meta name="description" content="Student dashboard for B. P. Public School students to view timetables, assignments, and more.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="../assets/images/logo.png" alt="B. P. Public School Logo">
+                <span>B. P. Public School</span>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item">
+                    <a href="student.html" class="active">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Timetable</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#">
+                        <i class="fas fa-book"></i>
+                        <span>Subjects</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#">
+                        <i class="fas fa-tasks"></i>
+                        <span>Assignments</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Exam Results</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>Fee Payment</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#">
+                        <i class="fas fa-download"></i>
+                        <span>Downloads</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="../pages/login.html">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="dashboard-header">
+                <div class="welcome-message">
+                    <h2>Welcome, Student!</h2>
+                    <p>Class: X-A | Roll No: 12 | Academic Year: 2023-24</p>
+                </div>
+                
+                <div class="user-actions">
+                    <div class="notification">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    
+                    <div class="user-profile">
+                        <img src="../assets/images/student-avatar.jpg" alt="Student Avatar">
+                        <span>John Doe</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3>Announcements</h3>
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="dashboard-card-body">
+                        <div class="announcement-item">
+                            <p class="announcement-date">August 25, 2023</p>
+                            <p class="announcement-text">Annual Sports Day scheduled for September 15, 2023. All students must participate.</p>
+                        </div>
+                        <div class="announcement-item">
+                            <p class="announcement-date">August 20, 2023</p>
+                            <p class="announcement-text">Mid-term examinations will begin from October 10, 2023. Syllabus uploaded.</p>
+                        </div>
+                        <div class="announcement-item">
+                            <p class="announcement-date">August 15, 2023</p>
+                            <p class="announcement-text">Independence Day celebration was a grand success. Thanks to all participants.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3>Upcoming Events</h3>
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <div class="dashboard-card-body">
+                        <div class="event-item">
+                            <p class="event-date">Sep 10, 2023</p>
+                            <p class="event-text">Science Exhibition</p>
+                        </div>
+                        <div class="event-item">
+                            <p class="event-date">Sep 15, 2023</p>
+                            <p class="event-text">Annual Sports Day</p>
+                        </div>
+                        <div class="event-item">
+                            <p class="event-date">Oct 2, 2023</p>
+                            <p class="event-text">Gandhi Jayanti Celebration</p>
+                        </div>
+                        <div class="event-item">
+                            <p class="event-date">Oct 10, 2023</p>
+                            <p class="event-text">Mid-term Examinations Begin</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3>Quick Links</h3>
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="dashboard-card-body">
+                        <ul class="quick-links">
+                            <li><a href="#"><i class="fas fa-download"></i> Download Syllabus</a></li>
+                            <li><a href="#"><i class="fas fa-calendar-alt"></i> View Academic Calendar</a></li>
+                            <li><a href="#"><i class="fas fa-money-bill"></i> Pay Fees Online</a></li>
+                            <li><a href="#"><i class="fas fa-id-card"></i> Update Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3 class="section-title" style="text-align: left; margin-bottom: 20px;">Today's Timetable</h3>
+                <div class="table-responsive">
+                    <table class="timetable">
+                        <thead>
+                            <tr>
+                                <th>Period</th>
+                                <th>Time</th>
+                                <th>Subject</th>
+                                <th>Teacher</th>
+                                <th>Room</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>8:00 AM - 8:45 AM</td>
+                                <td>Mathematics</td>
+                                <td>Mr. Sharma</td>
+                                <td>301</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>8:50 AM - 9:35 AM</td>
+                                <td>English</td>
+                                <td>Mrs. Gupta</td>
+                                <td>302</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>9:40 AM - 10:25 AM</td>
+                                <td>Science</td>
+                                <td>Mr. Verma</td>
+                                <td>Lab 1</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>10:30 AM - 11:15 AM</td>
+                                <td>Social Science</td>
+                                <td>Mrs. Singh</td>
+                                <td>304</td>
+                            </tr>
+                            <tr>
+                                <td>Break</td>
+                                <td>11:15 AM - 11:45 AM</td>
+                                <td colspan="3">Lunch Break</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>11:50 AM - 12:35 PM</td>
+                                <td>Hindi</td>
+                                <td>Mr. Tiwari</td>
+                                <td>301</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>12:40 PM - 1:25 PM</td>
+                                <td>Computer Science</td>
+                                <td>Mrs. Kumari</td>
+                                <td>Computer Lab</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>1:30 PM - 2:15 PM</td>
+                                <td>Physical Education</td>
+                                <td>Mr. Kumar</td>
+                                <td>Playground</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3 class="section-title" style="text-align: left; margin-bottom: 20px;">Pending Assignments</h3>
+                <div class="table-responsive">
+                    <table class="timetable">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Topic</th>
+                                <th>Assigned Date</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mathematics</td>
+                                <td>Quadratic Equations - Set A</td>
+                                <td>Aug 20, 2023</td>
+                                <td>Aug 30, 2023</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td><a href="#" class="btn btn-sm">View</a></td>
+                            </tr>
+                            <tr>
+                                <td>Science</td>
+                                <td>Acids, Bases and Salts - Experiment Report</td>
+                                <td>Aug 22, 2023</td>
+                                <td>Sep 01, 2023</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td><a href="#" class="btn btn-sm">View</a></td>
+                            </tr>
+                            <tr>
+                                <td>English</td>
+                                <td>Essay - My Vision for India 2047</td>
+                                <td>Aug 15, 2023</td>
+                                <td>Aug 25, 2023</td>
+                                <td><span class="status completed">Submitted</span></td>
+                                <td><a href="#" class="btn btn-sm">View</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3 class="section-title" style="text-align: left; margin-bottom: 20px;">Fee Payment</h3>
+                <div class="dashboard-card">
+                    <div class="fee-details">
+                        <div class="fee-item">
+                            <p class="fee-label">Annual Tuition Fee:</p>
+                            <p class="fee-value">₹45,000</p>
+                        </div>
+                        <div class="fee-item">
+                            <p class="fee-label">Amount Paid:</p>
+                            <p class="fee-value">₹30,000</p>
+                        </div>
+                        <div class="fee-item">
+                            <p class="fee-label">Balance Due:</p>
+                            <p class="fee-value">₹15,000</p>
+                        </div>
+                        <div class="fee-item">
+                            <p class="fee-label">Next Installment Due:</p>
+                            <p class="fee-value">Oct 10, 2023</p>
+                        </div>
+                        <div class="text-center" style="margin-top: 20px;">
+                            <button class="btn" onclick="payFees()">Pay Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - B. P. Public School</title>
+    <meta name="description" content="Explore B. P. Public School's photo gallery showcasing our campus, events, activities, and student achievements.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    
+    <style>
+        .full-gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 51, 102, 0.8);
+            color: white;
+            padding: 10px 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .gallery-caption h4 {
+            margin: 0 0 5px;
+            font-size: 1.1rem;
+        }
+        
+        .gallery-caption p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            background-color: var(--accent-color);
+            border: 2px solid var(--primary-color);
+            color: var(--secondary-color);
+            padding: 8px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .full-gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-gap: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .full-gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                grid-gap: 10px;
+            }
+            
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/logo.png" alt="B. P. Public School Logo">
+                <div class="logo-text">B. P. <span>Public School</span></div>
+            </a>
+            
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="admissions.html" class="nav-link">Admissions</a></li>
+                    <li><a href="curriculum.html" class="nav-link">Curriculum</a></li>
+                    <li><a href="facilities.html" class="nav-link">Facilities</a></li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-buttons">
+                <a href="login.html" class="btn">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding-top: 120px; padding-bottom: 60px;">
+        <div class="hero-image">
+            <img src="../assets/images/B.P.Public School Campus.jpg" alt="B.P. Public School Campus" class="campus-image">
+            <div class="overlay"></div>
+        </div>
+        <div class="container hero-content">
+            <h1>School Gallery</h1>
+            <p>Explore moments and memories from our school events, activities, and achievements</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Photo Collection</h2>
+            
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">All Photos</button>
+                <button class="filter-btn" data-filter="events">School Events</button>
+                <button class="filter-btn" data-filter="activities">Activities</button>
+                <button class="filter-btn" data-filter="celebrations">Celebrations</button>
+                <button class="filter-btn" data-filter="achievements">Achievements</button>
+            </div>
+            
+            <div class="full-gallery-container">
+                <!-- Row 1 -->
+                <div class="gallery-item" data-category="events">
+                    <img src="../assets/images/gallery/505803514_3209771359177310_1561637592673700042_n.jpg" alt="School Event">
+                    <div class="gallery-caption">
+                        <h4>School Event</h4>
+                        <p>Students participating in school activities</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="events celebrations">
+                    <img src="../assets/images/gallery/505550457_3207443952743384_6068455964569362352_n.jpg" alt="Cultural Performance">
+                    <div class="gallery-caption">
+                        <h4>Cultural Performance</h4>
+                        <p>Students showcasing their talents</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="events celebrations">
+                    <img src="../assets/images/gallery/505494105_3207443932743386_7523753342086125851_n.jpg" alt="School Function">
+                    <div class="gallery-caption">
+                        <h4>School Function</h4>
+                        <p>Celebrating achievements together</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="celebrations">
+                    <img src="../assets/images/gallery/505477621_3208867905934322_6105505264560821627_n.jpg" alt="School Celebrations">
+                    <div class="gallery-caption">
+                        <h4>School Celebrations</h4>
+                        <p>Special events at our school</p>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="gallery-item" data-category="activities">
+                    <img src="../assets/images/gallery/505450513_3207443532743426_4509951760228000777_n.jpg" alt="School Activities">
+                    <div class="gallery-caption">
+                        <h4>School Activities</h4>
+                        <p>Engaging learning experiences</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="events">
+                    <img src="../assets/images/gallery/505424543_3207580706063042_7015008156877399464_n.jpg" alt="School Programs">
+                    <div class="gallery-caption">
+                        <h4>School Programs</h4>
+                        <p>Building future leaders</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="celebrations">
+                    <img src="../assets/images/gallery/505420376_3207580749396371_5425400198049164704_n.jpg" alt="School Gatherings">
+                    <div class="gallery-caption">
+                        <h4>School Gatherings</h4>
+                        <p>Community and school events</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="activities">
+                    <img src="../assets/images/gallery/505408062_3207443946076718_3765848042221663697_n.jpg" alt="Student Activities">
+                    <div class="gallery-caption">
+                        <h4>Student Activities</h4>
+                        <p>Learning beyond classrooms</p>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="gallery-item" data-category="activities achievements">
+                    <img src="../assets/images/gallery/505383881_3207443956076717_3804578074524652095_n.jpg" alt="School Exhibition">
+                    <div class="gallery-caption">
+                        <h4>School Exhibitions</h4>
+                        <p>Showcasing creativity and innovation</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="activities">
+                    <img src="../assets/images/gallery/505377563_3207443712743408_2521657463230625719_n.jpg" alt="Learning Activities">
+                    <div class="gallery-caption">
+                        <h4>Learning Activities</h4>
+                        <p>Hands-on educational experiences</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="events">
+                    <img src="../assets/images/gallery/505321926_3207443599410086_102219365045837345_n.jpg" alt="School Event">
+                    <div class="gallery-caption">
+                        <h4>Special Programs</h4>
+                        <p>Educational and cultural events</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="celebrations achievements">
+                    <img src="../assets/images/gallery/505318845_3208865419267904_8452046140464548988_n.jpg" alt="Award Ceremony">
+                    <div class="gallery-caption">
+                        <h4>Award Ceremony</h4>
+                        <p>Recognizing student achievements</p>
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="gallery-item" data-category="events">
+                    <img src="../assets/images/gallery/505305732_3212058355615277_969108708691676361_n.jpg" alt="School Event">
+                    <div class="gallery-caption">
+                        <h4>School Event</h4>
+                        <p>Creating memorable experiences</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="activities">
+                    <img src="../assets/images/gallery/505305012_3212071685613944_3458612660341156198_n.jpg" alt="Class Activities">
+                    <div class="gallery-caption">
+                        <h4>Class Activities</h4>
+                        <p>Interactive learning sessions</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="achievements">
+                    <img src="../assets/images/gallery/505275999_3207443986076714_2158167902813133052_n.jpg" alt="Student Achievements">
+                    <div class="gallery-caption">
+                        <h4>Student Achievements</h4>
+                        <p>Celebrating our students' success</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="events celebrations">
+                    <img src="../assets/images/gallery/506015941_3212146922273087_4933802592391119439_n.jpg" alt="School Celebration">
+                    <div class="gallery-caption">
+                        <h4>School Celebration</h4>
+                        <p>Festive moments at our school</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section" style="background-color: var(--primary-color);">
+        <div class="container text-center">
+            <h2 style="color: var(--secondary-color); margin-bottom: 20px;">Want to Join Our School Community?</h2>
+            <p style="color: var(--secondary-color); margin-bottom: 30px;">Apply now and become a part of our vibrant educational institution</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="admissions.html" class="btn btn-secondary">Apply Now</a>
+                <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox for Gallery -->
+    <div class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img src="" alt="Gallery Image">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-column">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <img src="../assets/images/logo.png" alt="B. P. Public School Logo" style="height: 60px; margin-right: 10px; border-radius: 50%;">
+                    <div>
+                        <h3 style="margin-bottom: 0;">B. P. Public School</h3>
+                        <p style="margin-top: 5px; font-size: 0.9rem;">Manjhanpur, Kaushambi</p>
+                    </div>
+                </div>
+                <p>A prestigious educational institution offering a comprehensive approach to education.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="curriculum.html">Curriculum</a></li>
+                    <li><a href="facilities.html">Facilities</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Manjhanpur, Kaushambi, Uttar Pradesh</p>
+                <p><i class="fas fa-phone"></i> +91 XXXX XXXXXX</p>
+                <p><i class="fas fa-envelope"></i> info@bppublicschool.com</p>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <p>&copy; 2023 B. P. Public School. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/script.js"></script>
+    
+    <!-- Gallery Filtering Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get filter value
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter gallery items
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all') {
+                            item.style.display = 'block';
+                        } else {
+                            if (item.getAttribute('data-category').includes(filterValue)) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

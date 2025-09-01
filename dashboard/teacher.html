@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - B. P. Public School</title>
+    <meta name="description" content="Teacher dashboard for B. P. Public School teachers to manage attendance, upload assignments, and more.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="../assets/images/logo.png" alt="B. P. Public School Logo">
+                <span>B. P. Public School</span>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item">
+                    <a href="teacher.html" class="active">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>My Timetable</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#">
+                        <i class="fas fa-user-check"></i>
+                        <span>Attendance</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#">
+                        <i class="fas fa-book"></i>
+                        <span>Syllabus</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#">
+                        <i class="fas fa-tasks"></i>
+                        <span>Assignments</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Exam Results</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="../pages/login.html">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="dashboard-header">
+                <div class="welcome-message">
+                    <h2>Welcome, Mrs. Gupta!</h2>
+                    <p>English Department | ID: T-023 | Academic Year: 2023-24</p>
+                </div>
+                
+                <div class="user-actions">
+                    <div class="notification">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">2</span>
+                    </div>
+                    
+                    <div class="user-profile">
+                        <img src="../assets/images/teacher-avatar.jpg" alt="Teacher Avatar">
+                        <span>Anita Gupta</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3>My Classes</h3>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="dashboard-card-body">
+                        <ul class="quick-links">
+                            <li><a href="#">Class VIII-A (Class Teacher)</a></li>
+                            <li><a href="#">Class VIII-B</a></li>
+                            <li><a href="#">Class IX-A</a></li>
+                            <li><a href="#">Class X-A</a></li>
+                            <li><a href="#">Class X-B</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3>Announcements</h3>
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="dashboard-card-body">
+                        <div class="announcement-item">
+                            <p class="announcement-date">August 25, 2023</p>
+                            <p class="announcement-text">Staff meeting scheduled for August 30, 2023 at 3:00 PM in the Conference Room.</p>
+                        </div>
+                        <div class="announcement-item">
+                            <p class="announcement-date">August 22, 2023</p>
+                            <p class="announcement-text">Mid-term examination question papers to be submitted by September 15, 2023.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3>Quick Links</h3>
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="dashboard-card-body">
+                        <ul class="quick-links">
+                            <li><a href="#"><i class="fas fa-upload"></i> Upload Syllabus</a></li>
+                            <li><a href="#"><i class="fas fa-calendar-alt"></i> View Academic Calendar</a></li>
+                            <li><a href="#"><i class="fas fa-book"></i> Learning Resources</a></li>
+                            <li><a href="#"><i class="fas fa-id-card"></i> Update Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3 class="section-title" style="text-align: left; margin-bottom: 20px;">Today's Timetable</h3>
+                <div class="table-responsive">
+                    <table class="timetable">
+                        <thead>
+                            <tr>
+                                <th>Period</th>
+                                <th>Time</th>
+                                <th>Class</th>
+                                <th>Subject</th>
+                                <th>Room</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>8:00 AM - 8:45 AM</td>
+                                <td>VIII-A</td>
+                                <td>English</td>
+                                <td>201</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>8:50 AM - 9:35 AM</td>
+                                <td>X-A</td>
+                                <td>English</td>
+                                <td>302</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>9:40 AM - 10:25 AM</td>
+                                <td>X-B</td>
+                                <td>English</td>
+                                <td>303</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>10:30 AM - 11:15 AM</td>
+                                <td>VIII-B</td>
+                                <td>English</td>
+                                <td>202</td>
+                            </tr>
+                            <tr>
+                                <td>Break</td>
+                                <td>11:15 AM - 11:45 AM</td>
+                                <td colspan="3">Lunch Break</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>11:50 AM - 12:35 PM</td>
+                                <td>IX-A</td>
+                                <td>English</td>
+                                <td>301</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>12:40 PM - 1:25 PM</td>
+                                <td>-</td>
+                                <td>Free Period</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>1:30 PM - 2:15 PM</td>
+                                <td>VIII-A</td>
+                                <td>Class Teacher Period</td>
+                                <td>201</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3 class="section-title" style="text-align: left; margin-bottom: 20px;">Attendance Management</h3>
+                <div class="attendance-form">
+                    <form id="attendance-form-1">
+                        <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+                            <div class="form-group" style="flex: 1;">
+                                <label for="class-select">Select Class</label>
+                                <select id="class-select" class="form-control">
+                                    <option value="">Select Class</option>
+                                    <option value="8A">VIII-A</option>
+                                    <option value="8B">VIII-B</option>
+                                    <option value="9A">IX-A</option>
+                                    <option value="10A">X-A</option>
+                                    <option value="10B">X-B</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label for="date-select">Date</label>
+                                <input type="date" id="date-select" class="form-control" value="2023-08-28">
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label for="subject-select">Subject</label>
+                                <select id="subject-select" class="form-control">
+                                    <option value="">Select Subject</option>
+                                    <option value="English">English</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <table class="attendance-table">
+                            <thead>
+                                <tr>
+                                    <th>Roll No.</th>
+                                    <th>Student Name</th>
+                                    <th>Present</th>
+                                    <th>Absent</th>
+                                    <th>Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Aarav Kumar</td>
+                                    <td><input type="radio" name="attendance-1" value="present" checked></td>
+                                    <td><input type="radio" name="attendance-1" value="absent"></td>
+                                    <td><input type="text" class="form-control" placeholder="Optional remarks"></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Diya Sharma</td>
+                                    <td><input type="radio" name="attendance-2" value="present" checked></td>
+                                    <td><input type="radio" name="attendance-2" value="absent"></td>
+                                    <td><input type="text" class="form-control" placeholder="Optional remarks"></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Kabir Singh</td>
+                                    <td><input type="radio" name="attendance-3" value="present"></td>
+                                    <td><input type="radio" name="attendance-3" value="absent" checked></td>
+                                    <td><input type="text" class="form-control" value="Medical Leave" placeholder="Optional remarks"></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Ananya Patel</td>
+                                    <td><input type="radio" name="attendance-4" value="present" checked></td>
+                                    <td><input type="radio" name="attendance-4" value="absent"></td>
+                                    <td><input type="text" class="form-control" placeholder="Optional remarks"></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Rehan Khan</td>
+                                    <td><input type="radio" name="attendance-5" value="present" checked></td>
+                                    <td><input type="radio" name="attendance-5" value="absent"></td>
+                                    <td><input type="text" class="form-control" placeholder="Optional remarks"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div style="margin-top: 20px; text-align: right;">
+                            <button type="button" onclick="markAttendance(1)" class="btn">Submit Attendance</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3 class="section-title" style="text-align: left; margin-bottom: 20px;">Academic Updates</h3>
+                <div class="dashboard-card">
+                    <h4 style="margin-bottom: 20px;">Upload Study Materials</h4>
+                    <div class="upload-section">
+                        <div class="form-group">
+                            <label for="document-type">Document Type</label>
+                            <select id="document-type" class="form-control">
+                                <option value="">Select Type</option>
+                                <option value="syllabus">Syllabus</option>
+                                <option value="assignment">Assignment</option>
+                                <option value="study-material">Study Material</option>
+                                <option value="question-paper">Question Paper</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="upload-class">Class</label>
+                            <select id="upload-class" class="form-control">
+                                <option value="">Select Class</option>
+                                <option value="8A">VIII-A</option>
+                                <option value="8B">VIII-B</option>
+                                <option value="9A">IX-A</option>
+                                <option value="10A">X-A</option>
+                                <option value="10B">X-B</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="upload-title">Title</label>
+                            <input type="text" id="upload-title" class="form-control" placeholder="Enter document title">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="upload-description">Description</label>
+                            <textarea id="upload-description" class="form-control" rows="3" placeholder="Enter brief description"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="syllabus-file">Upload File</label>
+                            <input type="file" id="syllabus-file" class="form-control">
+                        </div>
+                        
+                        <div style="margin-top: 20px;">
+                            <button type="button" onclick="uploadDocument('syllabus')" class="btn">Upload Document</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
